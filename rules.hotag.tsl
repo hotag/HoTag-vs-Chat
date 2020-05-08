@@ -2,67 +2,29 @@
 Ruleset feito para o canal do HoTag
 *#
 
-###Bits entre 1 e 49###
-# - Dá gold nuggets
-# - Dá um stick inutil
-# - Dá uma bifana
-# - Toca o som do Creeper
-# - Dá um Enchanted Heart
+###Bits entre 1 e 99###
 EITHER
- 		SUMMON spider ~0 ~ ~ %{CustomName:"\"${actor}\"",CustomNameVisible:1}%
+	BOTH INSTANTLY
+		THROW everything
+	AND
+		CHANGE everything FROM inventory INTO stick
+	DISPLAYING %[
+	 	{text:"e aproveitou para arrumar o inventário!!"}]%
+	OR
+ 		SUMMON spider ~0 ~ ~ %{CustomName:"${actor}",CustomNameVisible:1}%
 		DISPLAYING %[
 			{text:"e trouxe um amigo com ele."}
 		]%
 	OR
- 		SUMMON zombie ~0 ~ ~ %{CustomName:"\"${actor}\"",CustomNameVisible:1}%
+ 		SUMMON zombie ~0 ~ ~ %{CustomName:"${actor}",CustomNameVisible:1}%
 		DISPLAYING %[
 			{text:"e trouxe um amigo com ele."}
 		]%
 	OR
-		EXECUTE %/give @p gold_nugget ${amount_i}% 
-		DISPLAYING %[
-		{text:"e também um monte de nuggets!!"}]%
- 	OR
-		EXECUTE %/give @p stick 1 0 {display:{Name:"Vara do Caos"},ench:[{id:51,lvl:1}]}%
-		DISPLAYING %[
-		{text:"e também uma ESPADA DO C***"}]%
- 	OR
- 		EXECUTE %/give @p cooked_porkchop 1 0%
- 		DISPLAYING %[
- 		{text:"e uma bifana"}]%
- 	OR
- 		EXECUTE %/playsound minecraft:entity.creeper.primed player @p% 
- 		DISPLAYING %[
- 		{text:"ATRÁS DE TI!!"}]%
- 	OR
  		EXECUTE %/scalinghealth difficulty add -10 @p% 
  		DISPLAYING %[
  		{text:"e quer diminuir-te a dificuldade do jogo!!"}]%
- 	ON Twitch Bits
- 	WITH donation_amount IN RANGE [1,19]
-
-###Bits entre 20 e 99###
-# - Full set de armadura de leather
-# - Blidness
-# - Poison
-# - Levitation 
-# - 5* Chicken
-# - Aumentou a dificuldade
-EITHER
-	BOTH INSTANTLY
-		THROW everything FROM armors
-		AND
-		CHANGE helmet INTO leather_helmet
-		AND
-		CHANGE chestplate INTO leather_chestplate
-		AND
-		CHANGE leggings INTO leather_leggings
-		AND
-		CHANGE BOOTS INTO leather_boots
-		DISPLAYING %[
-  			{text:"e deu-te a melhor armadura de sempre."}
- 		]%
- 	OR
+	OR
 		EXECUTE %/effect @p 15 15%
 		DISPLAYING %[
   			{text:"e ficaste cego de alegria."}
@@ -79,7 +41,7 @@ EITHER
  		]%
  	OR
  		FOR 5 TIMES 
- 			SUMMON chicken ~0 ~1 ~ %{CustomName:"\"${actor}\"",CustomNameVisible:1}%
+ 			SUMMON chicken ~ ~1 ~ %{CustomName:"${actor}",CustomNameVisible:1}%
 			DISPLAYING %[
   				{text:"e criou galinhas com o nome dele."}
  			]%
@@ -87,28 +49,45 @@ EITHER
  	 	EXECUTE %/scalinghealth difficulty add 10 @p% 
  		DISPLAYING %[
  		{text:"e aumentou a dificuldade do jogo!!"}]%
-	ON Twitch Bits
-	WITH donation_amount IN RANGE [20,99]
-
-###Bits entre 100 e 249###
-# - Atira a minha hotbar toda para o chão
-# - Mining fatige por 30 segundos
-# - Teleporta-te para o Y=255
-# - Enche-me de teias de aranha
-# - Põe de Noite
-# - Dá-me dois Cursed Heart
-# - Atira-me com um raio
-EITHER
-	THROW everything
-		DISPLAYING %[
-  				{text:"e ajudou a aliviar o teu peso."}
- 			]%
  	OR
- 		EXECUTE %/effect @p 4 60 10%
+ 		SUMMON enderman ~ ~1 ~ %{CustomName:"${actor}",CustomNameVisible:1}%
+		DISPLAYING %[
+			{text:"e trouxe um amigo com ele."}
+		]%
+	OR
+ 		SUMMON embers:ancient_golem ~ ~1 ~ %{CustomName:"${actor}",CustomNameVisible:1}%
+		DISPLAYING %[
+			{text:"e trouxe um amigo com ele."}
+		]%
+	OR
+ 		SUMMON wither_skeleton ~ ~1 ~ %{CustomName:"${actor}",CustomNameVisible:1}%
+		DISPLAYING %[
+			{text:"e trouxe um amigo com ele."}
+		]%
+	OR
+ 		SUMMON skeleton ~ ~1 ~ %{CustomName:"${actor}",CustomNameVisible:1}%
+		DISPLAYING %[
+			{text:"e trouxe um amigo com ele."}
+		]%
+	OR
+ 		SUMMON twilightforest:kobold ~ ~1 ~ %{CustomName:"${actor}",CustomNameVisible:1}%
+		DISPLAYING %[
+			{text:"e trouxe um amigo com ele."}
+		]%
+  	OR
+ 	 	EXECUTE %/summon lightning_bolt @p% 
+ 		DISPLAYING %[
+ 		{text:"e isso deixou-te cheio de energia!!"}]%
+ 	OR
+ 	 	EXECUTE %/effect @p 4 30%
  		DISPLAYING %[
   			{text:"mas mesmo assim ficaste pesado."}
  		]%
- 	OR
+	ON Twitch Bits
+	WITH donation_amount IN RANGE [1,99]
+
+###Bits entre 100 e 449###
+EITHER
  		EXECUTE %/tp @p ~ 255 ~%
  		DISPLAYING %[
   			{text:"e sentiste vontade de voar."}
@@ -122,70 +101,30 @@ EITHER
   				{text:"e não tens como escapar agora."}
  			]%
  	OR
- 		EXECUTE %/time set night%
- 		DISPLAYING %[
- 			{text:"e já são horas de ir para a caminha."}
- 		]%
-  	OR
- 	 	EXECUTE %/scalinghealth difficulty add 20 @p% 
+ 	 	EXECUTE %/scalinghealth difficulty add 50 @p% 
  		DISPLAYING %[
  		{text:"e aumentou a dificuldade do jogo!!"}]%
-  	OR
- 	 	EXECUTE %/summon lightning_bolt @p% 
- 		DISPLAYING %[
- 		{text:"e isso deixou-te cheio de energia!!"}]%
+ 	OR
+ 		EXECUTE %/summon zombie ~ ~1 ~ {CustomName:"\"${actor}\"",HandItems:[{Count:1,id:stick,tag:{ench:[{id:19,lvl:1000}]}},{}],HandDropChances:[0.5f,0.0f],ArmorItems:[{},{},{},{Count:1,id:diamond_helmet}]}%
+		DISPLAYING %[
+ 			{text:"e agora tens um amigo cheio de energia!!"}]%
+ 	OR
+ 		EXECUTE %/spreadplayers ~ ~ 400 500 false @p%
+			%/playsound entity.endermen.teleport voice @p%
+		DISPLAYING %[
+			{text:"e vamos imitar um Enderman."}
+		]%
+	OR
+		FOR 100 TIMES 
+	 		SUMMON chicken ~0 ~1 ~ %{CustomName:"\"${actor}\"",CustomNameVisible:1}%
+		DISPLAYING %[
+			{text:"e criou cem galinhas com o nome dele."}
+		]%
  	ON Twitch Bits
-	WITH donation_amount IN RANGE [100,249]
+	WITH donation_amount IN RANGE [100,499]
 
-###Bits entre 250 e 499###
-# - Faz spawn de um zombie com um stick de knockback 10
-# - Faz teleporte até 500 blocos de distãncia
-# - Põe de dia e chuva
-# - Spawn de 100 galinhas com um raio de 25
-# - Dá-me um item op aleatório
+###Bits entre 500 e 999###
 EITHER
-	EXECUTE %/summon zombie ~ ~1 ~ {CustomName:"\"${actor}\"",HandItems:[{Count:1,id:stick,tag:{ench:[{id:19,lvl:1000}]}},{}],HandDropChances:[0.5f,0.0f],ArmorItems:[{},{},{},{Count:1,id:diamond_helmet}]}%
-	DISPLAYING %[
- 		{text:"e agora tens um amigo cheio de energia!!"}]%
-	OR
-	EXECUTE %/spreadplayers ~ ~ 400 500 false @p%
-	%/playsound entity.endermen.teleport voice @p%
-	DISPLAYING %[
-		{text:"e vamos imitar um Enderman."}
-	]%
-	OR
-	EXECUTE %/time set day% 
-	%/weather rain%
-	DISPLAYING %[
-		{text:"e parece que está um dia cizento."}
-	]%
-	OR
-	FOR 100 TIMES 
- 		SUMMON chicken ~0 ~1 ~ %{CustomName:"\"${actor}\"",CustomNameVisible:1}%
-	DISPLAYING %[
-		{text:"e criou cem galinhas com o nome dele."}
-	]%
-	OR
- 	EXECUTE %/scalinghealth difficulty add 50 @p% 
-	DISPLAYING %[
- 		{text:"e aumentou a dificuldade do jogo!!"}]%
-	ON Twitch Bits
-	WITH donation_amount IN RANGE [250,499]
-
-###Bits entre 500 e 2499###
-# - Atira o meu inventário todo para o chão e enche o mu inventário com um item inutil
-# - Faz Spawn de uma caixa de Obsidian à miha volta
-# - Dá-me 10 Cursed Hearts
-# - Comando Kill
-# - Spawn de 100 Zombies com 10 de vida
-EITHER
-	BOTH INSTANTLY
-		THROW everything
-	AND
-		CHANGE everything FROM inventory INTO stick
-	DISPLAYING %[
-	 	{text:"e aproveitou para arrumar o inventário!!"}]%
-	OR
 	BOTH INSTANTLY
 		EXECUTE %/fill ~-1 ~-1 ~-1 ~1 ~2 ~-1 obsidian 0 replace air%
 		AND
@@ -213,14 +152,9 @@ EITHER
 		{text:"e um festival de abraços."}
 	]%
 	ON Twitch Bits
-	WITH donation_amount IN RANGE [500,2499]
+	WITH donation_amount IN RANGE [500,999]
 
-###Bits mais que 2500###
-# -Guarda todo o meu inventário num ender chest
-# -Dá-me uma boa armadura
-# -Dá-me um Bow com Power XX e Infinity
-# -Desliga o mobGriefing
-# -Faz Summon de 3 Withers
+###Bits mais que 1000###
 BOTH INSTANTLY
 	THROW everything FROM armors
 	AND
@@ -244,7 +178,7 @@ BOTH INSTANTLY
 			{text:"e deu-te uma armadura do caraças, um arco do catano e um monte de amigos."}
 		]%
 	ON Twitch Bits
-	WITH donation_amount >= 2500
+	WITH donation_amount >= 100
 
 ###Subscrição###
 EITHER 
